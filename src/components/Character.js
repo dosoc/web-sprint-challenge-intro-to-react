@@ -1,25 +1,38 @@
 // Write your Character component here
-import styled from 'styled-components'
+import React, {useState} from 'react';
+import styled from 'styled-components';
+
+import Details from './Details'
 
 const StyledChar = styled.div`
     border-radius: 10px;
     background-color: black;
-    opacity: 0.5;
+    opacity: 0.7;
     color: white;
     margin: 1vh;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
-    &:hover{
+    &:hover {
         opacity: 1;
+    }
     }
 `;
 
 const Character = props => {
+    const [ active, setActive ] = useState(false);
+    const toggleDetails = () => {
+        setActive(!active)
+    };
+
+    const {char} = props;
     return (
         <StyledChar className="character">
-            <h3>Name: {props.name}</h3>
-            <h3>Birth Year: {props.birth_year}</h3>
+            <h3>{char.name}</h3>
+            <button onClick={toggleDetails}>{!active?'details':'close'}</button>
+            {active && <Details char={char} close={toggleDetails}/>}
         </StyledChar>
     )
 }
