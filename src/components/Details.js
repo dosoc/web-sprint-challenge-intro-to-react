@@ -6,7 +6,6 @@ const StyledDetails = styled.div`
     flex-direction: column;
     align-items: center;
     list-style: none;
-    transition: 0.9s;
 `
 
 const Details = props => {
