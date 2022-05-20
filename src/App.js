@@ -4,7 +4,8 @@ import axios from 'axios';
 import Character from './components/Character';
 
 const App = () => {
-  const [ characters, setCharacters ] = useState(null);
+  const [ characters, setCharacters ] = useState([]);
+  const [ active, setActive ] = useState(null);
 
   useEffect(()=> {
     axios.get('https://swapi.dev/api/people')
